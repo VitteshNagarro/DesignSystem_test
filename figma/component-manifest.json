@@ -1,0 +1,171 @@
+{
+  "fileKey": "iVt954yRRUlVSlWU4HJygU",
+  "fileName": "DesignSystem_Test",
+  "lastUpdated": "2026-09-07",
+  "components": {
+    "Button": {
+      "figmaNodeId": "4:82",
+      "figmaComponentKey": "",
+      "figmaUrl": "https://www.figma.com/design/iVt954yRRUlVSlWU4HJygU/DesignSystem_Test?node-id=4-82",
+      "codePath": "packages/ui/src/Button/Button.tsx",
+      "storyPath": "packages/ui/src/Button/Button.stories.tsx",
+      "codeConnectPath": "packages/ui/src/Button/Button.figma.ts",
+      "codeConnectId": "button",
+      "status": "synced",
+      "props": {
+        "variant": {
+          "figmaProperty": "Variant",
+          "type": "enum",
+          "values": [
+            "primary",
+            "secondary",
+            "tertiary"
+          ],
+          "figmaValues": [
+            "Primary",
+            "Secondary",
+            "Tertiary"
+          ],
+          "figmaNodes": {
+            "primary": "4:81",
+            "secondary": "4:101",
+            "tertiary": "4:103",
+            "set": "4:82"
+          }
+        },
+        "children": {
+          "figmaProperty": "Label",
+          "type": "string"
+        }
+      }
+    },
+    "Input": {
+      "figmaNodeId": "1:3",
+      "figmaComponentKey": "PLACEHOLDER_INPUT_KEY",
+      "figmaUrl": "https://www.figma.com/design/iVt954yRRUlVSlWU4HJygU/DesignSystem_Test?node-id=1-3",
+      "codePath": "packages/ui/src/Input/Input.tsx",
+      "storyPath": "packages/ui/src/Input/Input.stories.tsx",
+      "codeConnectPath": "packages/ui/src/Input/Input.figma.ts",
+      "codeConnectId": "input",
+      "status": "pending",
+      "props": {
+        "size": {
+          "figmaProperty": "Size",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ]
+        },
+        "state": {
+          "figmaProperty": "State",
+          "type": "enum",
+          "values": [
+            "default",
+            "error",
+            "disabled"
+          ]
+        }
+      }
+    },
+    "Badge": {
+      "figmaNodeId": "1:4",
+      "figmaComponentKey": "PLACEHOLDER_BADGE_KEY",
+      "figmaUrl": "https://www.figma.com/design/iVt954yRRUlVSlWU4HJygU/DesignSystem_Test?node-id=1-4",
+      "codePath": "packages/ui/src/Badge/Badge.tsx",
+      "storyPath": "packages/ui/src/Badge/Badge.stories.tsx",
+      "codeConnectPath": "packages/ui/src/Badge/Badge.figma.ts",
+      "codeConnectId": "badge",
+      "status": "pending",
+      "props": {
+        "variant": {
+          "figmaProperty": "Variant",
+          "type": "enum",
+          "values": [
+            "default",
+            "primary",
+            "success",
+            "warning",
+            "danger"
+          ]
+        },
+        "size": {
+          "figmaProperty": "Size",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md"
+          ]
+        }
+      }
+    },
+    "Card": {
+      "figmaNodeId": "1:5",
+      "figmaComponentKey": "PLACEHOLDER_CARD_KEY",
+      "figmaUrl": "https://www.figma.com/design/iVt954yRRUlVSlWU4HJygU/DesignSystem_Test?node-id=1-5",
+      "codePath": "packages/ui/src/Card/Card.tsx",
+      "storyPath": "packages/ui/src/Card/Card.stories.tsx",
+      "codeConnectPath": "packages/ui/src/Card/Card.figma.ts",
+      "codeConnectId": "card",
+      "status": "pending",
+      "props": {
+        "variant": {
+          "figmaProperty": "Variant",
+          "type": "enum",
+          "values": [
+            "elevated",
+            "outlined",
+            "filled"
+          ]
+        }
+      }
+    },
+    "Typography": {
+      "figmaNodeId": "1:6",
+      "figmaComponentKey": "PLACEHOLDER_TYPOGRAPHY_KEY",
+      "figmaUrl": "https://www.figma.com/design/iVt954yRRUlVSlWU4HJygU/DesignSystem_Test?node-id=1-6",
+      "codePath": "packages/ui/src/Typography/Typography.tsx",
+      "storyPath": "packages/ui/src/Typography/Typography.stories.tsx",
+      "codeConnectPath": "packages/ui/src/Typography/Typography.figma.ts",
+      "codeConnectId": "typography",
+      "status": "pending",
+      "props": {
+        "variant": {
+          "figmaProperty": "Variant",
+          "type": "enum",
+          "values": [
+            "display",
+            "h1",
+            "h2",
+            "h3",
+            "body",
+            "body-sm",
+            "caption",
+            "label"
+          ]
+        },
+        "weight": {
+          "figmaProperty": "Weight",
+          "type": "enum",
+          "values": [
+            "regular",
+            "medium",
+            "semibold",
+            "bold"
+          ]
+        },
+        "color": {
+          "figmaProperty": "Color",
+          "type": "enum",
+          "values": [
+            "default",
+            "muted",
+            "inverse",
+            "danger"
+          ]
+        }
+      }
+    }
+  }
+}

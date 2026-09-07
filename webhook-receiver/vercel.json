@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "api/figma-webhook.ts", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/figma-webhook", "dest": "/api/figma-webhook.ts" }
+  ]
+}

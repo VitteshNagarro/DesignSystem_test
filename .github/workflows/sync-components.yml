@@ -1,0 +1,45 @@
+name: Sync Components from Figma
+
+on:
+  repository_dispatch:
+    types: [figma-library-publish]
+  workflow_dispatch:
+    inputs:
+      component:
+        description: 'Component name to sync (or "all")'
+        required: false
+        default: 'all'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync-components:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Validate component manifest
+        run: pnpm sync:manifest
+
+      - name: Build tokens and UI
+        run: pnpm build:tokens && pnpm --filter @design-system/ui build
+
+      - name: Notify component sync needed
+        if: github.event_name == 'repository_dispatch'
+        run: |
+          echo "::notice::Figma library published — run Cursor agent to sync components"
+          echo "Component filter: ${{ github.event.inputs.component || 'all' }}"
+          echo "See .cursor/rules/design-system.mdc"

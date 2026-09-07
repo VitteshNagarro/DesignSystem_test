@@ -1,0 +1,68 @@
+---
+description: Rules for Figma-connected design system development and automated component sync
+globs:
+  - packages/ui/**
+  - packages/tokens/**
+  - figma/**
+  - scripts/**
+alwaysApply: false
+---
+
+# Design System — Figma Sync Rules
+
+## Figma MCP Workflow (required for component changes)
+
+When implementing or updating a component from Figma, follow this order:
+
+1. Read `figma/component-manifest.json` for the component's `figmaNodeId`, `codePath`, and prop mappings
+2. Run `get_design_context(fileKey, nodeId)` to fetch structured layout, props, and tokens
+3. Run `get_screenshot(fileKey, nodeId)` for visual reference
+4. Only then edit the React component, story, and Code Connect template
+5. Use design token CSS variables (`var(--color-bg-primary)`) — never hardcode hex colors or pixel values
+6. Use Tailwind classes that reference token variables (e.g. `bg-color-bg-primary`, `p-spacing-md`)
+7. Validate the implementation against the Figma screenshot before marking complete
+8. Update `figma/component-manifest.json` if props or variants changed
+
+## Token Rules
+
+- Token source files live in `packages/tokens/src/*.json` (W3C Design Tokens format)
+- Generated files in `packages/tokens/dist/` are AUTO-GENERATED — never edit manually
+- Run `pnpm build:tokens` after token changes
+- Figma Variable Code Syntax must match: `color/bg/primary` → `var(--color-bg-primary)`
+
+## Component Conventions
+
+- One folder per component: `packages/ui/src/{Component}/`
+- Files: `{Component}.tsx`, `{Component}.stories.tsx`, `{Component}.figma.ts`
+- Export from `packages/ui/src/index.ts`
+- Props must match `figma/component-manifest.json` definitions
+- Co-locate Storybook stories with components; Storybook picks them up automatically
+
+## Code Connect
+
+- Template files use `figma.selectedInstance` with prop mappings from manifest
+- Publish with `npx figma connect publish --token=$FIGMA_TOKEN`
+- Each template `id` must match `codeConnectId` in the manifest
+
+## Sync Commands
+
+```bash
+pnpm sync:figma      # Pull Figma Variables → packages/tokens/src/
+pnpm push:figma      # Push local tokens → Figma (bidirectional)
+pnpm sync:manifest   # Validate manifest against code files
+pnpm build:tokens    # Rebuild CSS, Tailwind theme, TS tokens
+pnpm storybook       # Local Storybook at http://localhost:6006
+```
+
+## Automated Sync (CI)
+
+- Token changes: `.github/workflows/sync-tokens.yml` (cron + webhook)
+- Component changes: `.github/workflows/sync-components.yml` (LIBRARY_PUBLISH webhook)
+- On Figma library publish, agent reads manifest → fetches design context → updates code → opens PR
+
+## Do Not
+
+- Hardcode colors, spacing, or font sizes in components
+- Edit generated token output files
+- Skip the Figma screenshot validation step
+- Create components without updating the manifest

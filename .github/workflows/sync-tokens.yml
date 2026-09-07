@@ -1,0 +1,53 @@
+name: Sync Design Tokens from Figma
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  repository_dispatch:
+    types: [figma-library-publish, figma-token-change]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync-tokens:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Pull tokens from Figma
+        env:
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+          FIGMA_FILE_KEY: ${{ secrets.FIGMA_FILE_KEY }}
+        run: pnpm sync:figma
+
+      - name: Build tokens
+        run: pnpm build:tokens
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: sync design tokens from Figma'
+          title: 'chore: sync design tokens from Figma'
+          body: |
+            Automated token sync from Figma Variables API.
+
+            - Updated W3C token files in `packages/tokens/src/`
+            - Rebuilt CSS variables, Tailwind theme, and TS tokens
+          branch: sync/figma-tokens
+          base: main
+          labels: design-system, automated

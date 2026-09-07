@@ -1,0 +1,28 @@
+{
+  "name": "design-system-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm --filter @design-system/storybook dev",
+    "storybook": "pnpm --filter @design-system/storybook storybook",
+    "build-storybook": "pnpm --filter @design-system/storybook build-storybook",
+    "build:tokens": "pnpm --filter @design-system/tokens build",
+    "sync:figma": "tsx scripts/sync-figma-tokens.ts",
+    "push:figma": "tsx scripts/push-figma-tokens.ts",
+    "sync:manifest": "tsx scripts/sync-component-manifest.ts",
+    "register:webhook": "tsx scripts/register-figma-webhook.ts",
+    "test:acceptance": "tsx scripts/acceptance-test.ts",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@9.15.0"
+}

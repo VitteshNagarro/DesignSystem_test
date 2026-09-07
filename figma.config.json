@@ -1,0 +1,8 @@
+{
+  "codeConnect": {
+    "include": ["packages/ui/src/**/*.figma.ts"],
+    "label": "React",
+    "language": "typescript",
+    "interactiveSetupFigmaOption": "skip"
+  }
+}

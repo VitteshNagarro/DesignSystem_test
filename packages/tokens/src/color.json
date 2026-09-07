@@ -1,0 +1,20 @@
+{
+  "color": {
+    "$type": "color",
+    "$value": "#ffffff",
+    "border": {
+      "default": {
+        "$type": "color",
+        "$value": "#e2e8f0"
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "#2563eb"
+      },
+      "danger": {
+        "$type": "color",
+        "$value": "#fca5a5"
+      }
+    }
+  }
+}

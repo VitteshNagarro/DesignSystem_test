@@ -1,0 +1,29 @@
+{
+  "name": "@design-system/tokens",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/ts/tokens.js",
+  "types": "./dist/ts/tokens.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/ts/tokens.d.ts",
+      "import": "./dist/ts/tokens.js"
+    },
+    "./css": "./dist/css/variables.css",
+    "./tailwind": {
+      "types": "./dist/tailwind/theme.d.ts",
+      "import": "./dist/tailwind/theme.js"
+    }
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo 'no lint configured'"
+  },
+  "devDependencies": {
+    "@tokens-studio/sd-transforms": "^1.2.9",
+    "style-dictionary": "^4.3.0",
+    "typescript": "^5.7.2"
+  }
+}

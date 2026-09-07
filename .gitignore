@@ -1,0 +1,10 @@
+node_modules
+dist
+storybook-static
+.turbo
+*.log
+.env
+.env.local
+.DS_Store
+figma/.token-sync-state.json
+.pnpm-store
