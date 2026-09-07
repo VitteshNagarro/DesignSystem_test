@@ -40,7 +40,6 @@ for (const name of Object.keys(manifest.components)) {
 }
 
 // Workflows
-check('Token sync workflow', existsSync(join(ROOT, '.github/workflows/sync-tokens.yml')));
 check('Component sync workflow', existsSync(join(ROOT, '.github/workflows/sync-components.yml')));
 check('Storybook deploy workflow', existsSync(join(ROOT, '.github/workflows/deploy-storybook.yml')));
 

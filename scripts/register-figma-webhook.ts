@@ -75,7 +75,7 @@ async function main() {
   console.log(JSON.stringify(JSON.parse(body), null, 2));
   console.log('\nOn library publish, GitHub will receive:');
   console.log('  - figma-library-publish → sync-components.yml');
-  console.log('  - figma-token-change → sync-tokens.yml');
+  console.log('  - figma-token-change → (sync locally with pnpm sync:figma)');
 }
 
 main().catch((err) => {
